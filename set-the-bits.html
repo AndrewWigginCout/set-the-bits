@@ -1,0 +1,33 @@
+<p>Set the checkboxes to set the bits. See the int and ascii representation.</p>
+<form id="myform">
+    <input type="checkbox" name="checkfield" id="g01-07"  onchange="doalert(this)"/>
+    <input type="checkbox" name="checkfield" id="g01-06"  onchange="doalert(this)"/>
+    <input type="checkbox" name="checkfield" id="g01-05"  onchange="doalert(this)"/>
+    <input type="checkbox" name="checkfield" id="g01-04"  onchange="doalert(this)"/>
+    <input type="checkbox" name="checkfield" id="g01-03"  onchange="doalert(this)"/>
+    <input type="checkbox" name="checkfield" id="g01-02"  onchange="doalert(this)"/>
+    <input type="checkbox" name="checkfield" id="g01-01"  onchange="doalert(this)"/>
+    <input type="checkbox" name="checkfield" id="g01-00"  onchange="doalert(this)"/>
+</form>
+<p id="output">0</p>
+
+<script>
+let myint = 0;
+for (let i=0;i<8;i++){
+  let id = "g01-0" + String(i);
+  document.getElementById(id).checked = 0;
+}
+function doalert(checkboxElem) {
+  console.log(checkboxElem.id);
+  place = checkboxElem.id[5];
+  place = Number("0x"+place);
+  if (checkboxElem.checked){
+    myint += 2**(place);}
+  else {
+    myint -= 2**(place);}
+  console.log(myint);
+  output.textContent = String(myint) + " " + String.fromCharCode(myint);
+}
+let output = document.getElementById("output");
+
+</script>
